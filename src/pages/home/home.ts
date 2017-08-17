@@ -11,8 +11,16 @@ export class HomePage {
   IncomeStatement: FirebaseListObservable<any[]>;
   newItem='';
 
-  constructor(public navCtrl: NavController) {
+  constructor(public navCtrl: NavController, public FirebaseProvider: FirebaseProvider) {
+   this.IncomeStatement=this.FirebaseProvider.getIncomeStatement();
+  }
 
+  addItem(){
+    this.FirebaseProvider.addItem(this.newItem);
+  }
+
+  removeItem(id){
+    this.FirebaseProvider.removeItem(id);
   }
 
 }
